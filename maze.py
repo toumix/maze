@@ -5,6 +5,7 @@ SIZE = (10, 10)
 FOG = 2
 N, S, E, W = range(4)
 
+
 def flip(d):
     if d == N:
         return S
@@ -14,6 +15,7 @@ def flip(d):
         return W
     if d == W:
         return E
+
 
 def complement(w):
     d, (x, y) = w
@@ -127,7 +129,7 @@ class Maze:
         def angle(x, y):
             intersection = [w for w in [(N, (x, y)), (S, (x - 1, y - 1)),
                                         (E, (x - 1, y - 1)), (W, (x, y))]
-                             if w in self.walls or complement(w) in self.walls]
+                            if w in self.walls or complement(w) in self.walls]
             if len(intersection) == 2:
                 if [d for (d, _) in intersection] == [N, S]:
                     return "-"
@@ -199,6 +201,7 @@ class Maze:
 
     def print_all(self):
         print(self.__str__(fog=None))
+
 
 if __name__ == "__main__":
     Maze().print_all()
